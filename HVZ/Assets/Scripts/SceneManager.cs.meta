@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1db638de11f5f42c080191d3d7a6985e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Human: {fileID: 7595270268935902940, guid: 78f1be33faa334f7980d7c07fd5a9571, type: 3}
+  - Zombie: {fileID: 2242722176406443014, guid: 0a5e29b91012b44358512eed74719b1e,
+      type: 3}
+  - PSG: {fileID: 5644903246339557244, guid: 843dec5d12161445193573b7c61ac252, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

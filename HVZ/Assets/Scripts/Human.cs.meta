@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9a9d9d92506c24bcebeef528b25dda12
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - targetZombie: {fileID: 2242722176406443014, guid: 0a5e29b91012b44358512eed74719b1e,
+      type: 3}
+  - targetTreasure: {fileID: 5644903246339557244, guid: 843dec5d12161445193573b7c61ac252,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
