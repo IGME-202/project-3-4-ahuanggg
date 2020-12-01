@@ -19,6 +19,9 @@ public class SceneManager : MonoBehaviour
 
     GameObject Human2, Zombie2, PSG2;
 
+    public float numZombie;
+    public float numHuman;
+
     public List<Wall> Walls = new List<Wall>();
     
     // Start is called before the first frame update
@@ -45,16 +48,22 @@ public class SceneManager : MonoBehaviour
             
         //}
 
-        Human Human2 = Instantiate(Human, new Vector3(Random.Range(-75, 75), 1f, Random.Range(-75, 75)), Quaternion.identity) as Human;
-        Human2.Walls = Walls;
-        
+        //Human Human2 = Instantiate(Human, new Vector3(Random.Range(-75, 75), 1f, Random.Range(-75, 75)), Quaternion.identity) as Human;
+        //Human2.Walls = Walls;
+
+        for (int i = 0; i < numHuman; i++)
+        {
+            Human Human2 = Instantiate(Human, new Vector3(Random.Range(-75, 75), 1f, Random.Range(-75, 75)), Quaternion.identity) as Human;
+            Human2.Walls = Walls;
+        }
+
         var PSG2 = Instantiate(PSG, new Vector3(Random.Range(-75, 75), 1f, Random.Range(-75, 75)), Quaternion.identity);
     
 
-        GameObject humanRef = GameObject.Find("Human(Clone)");
-        Human humanScript = humanRef.GetComponent<Human>();
+        //GameObject humanRef = GameObject.Find("Human(Clone)");
+        //Human humanScript = humanRef.GetComponent<Human>();
 
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < numZombie; i++)
         {
             Zombie Zombie2 = Instantiate(Zombie, new Vector3(Random.Range(-75, 75), 1f, Random.Range(-75, 75)), Quaternion.identity) as Zombie;
             Zombie2.Walls = Walls;
@@ -69,25 +78,26 @@ public class SceneManager : MonoBehaviour
             {
                 Debug.Log(zom.name);
                 Zombie zombieScript = zom.GetComponent<Zombie>();
-                zombieScript.targetHuman = Human2;
+                foreach (GameObject hum in GameObject.FindGameObjectsWithTag("Human"))
+                {
+                    zombieScript.humans.Add(hum);
+                }
             }
-            
         }
 
         // to fill up the zombie list in human
-        foreach (GameObject zom in GameObject.FindGameObjectsWithTag("Zombie"))
+        foreach (GameObject hum in GameObject.FindGameObjectsWithTag("Human"))
         {
-            Debug.Log(zom.name);
-            if (zom.name == "Zombie(Clone)")
+            Debug.Log(hum.name);
+            Human humanScript = hum.GetComponent<Human>();
+            foreach (GameObject zom in GameObject.FindGameObjectsWithTag("Zombie"))
             {
                 humanScript.zombies.Add(zom);
+                humanScript.targetTreasure = PSG2;
             }
 
         }
-
-
-        humanScript.targetZombie = Zombie2;
-        humanScript.targetTreasure = PSG2;
+        
         
     }
 

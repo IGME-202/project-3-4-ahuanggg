@@ -16,7 +16,11 @@ public class Zombie : Vehicle
 
     protected override void CalcSteeringForces()
     {
-        ApplyForce(Seek(targetHuman.transform.position));
+        for(int i = 0; i < humans.Count; i++)
+        {
+            ApplyForce(Seek(humans[i].transform.position));
+        }
+        
         //for (int i = 0; i < humans.Count; i++)
         //{
         //    ApplyForce(Seek(humans[i]));
